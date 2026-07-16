@@ -72,10 +72,21 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (closeModalBtn && modal) {
-        // Quand le client clique sur "Continuer", on ferme le pop-up et on ouvre WhatsApp
-        closeModalBtn.addEventListener('click', () => {
-            modal.style.display = 'none';
-            window.open(whatsappBtn.href, '_blank');
-        });
-    }
+    closeModalBtn.addEventListener('click', () => {
+        modal.style.display = 'none';
+        
+        // 1. Récupération du montant total propre (sans le texte d'accompagnement)
+        const totalAmount = currentTotal.replace(' FCFA', '').trim();
+        
+        // 2. Votre contact WhatsApp Business officiel : 652091367
+        const phoneNumber = "237652091367"; 
+        
+        // 3. Message personnalisé encodé pour l'URL
+        const message = encodeURIComponent(`Bonjour Connexion Digitale 237, je viens de faire le transfert de ${totalAmount} FCFA pour ma commande. Voici mon reçu.`);
+        
+        // 4. Construction du lien et ouverture dans un nouvel onglet
+        const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+        window.open(whatsappUrl, '_blank');
+    });
+}
 });
