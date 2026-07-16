@@ -4,24 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connexion Digitale 237 - Devis en Ligne</title>
-    <!-- On lie notre fichier de style CSS externe -->
+    <!-- Lien vers notre fichier de style CSS externe -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <header>
+        <!-- Insertion du logo avec le nom exact de votre fichier -->
+        <div class="logo-container">
+            <img src="logo.png.jpg" alt="Logo Connexion Digitale 237" class="app-logo">
+        </div>
         <h1>Connexion Digitale 237</h1>
-        <p>Estimez le tarif de votre projet numérique en 2 clics !</p>
+        <p>Estimez le tarif de votre projet ou service numérique en quelques clics !</p>
     </header>
-
     <main class="app-container">
         
         <div class="form-group">
-            <label for="client-name">Votre Nom ou Entreprise :</label>
-            <input type="text" id="client-name" placeholder="Ex: Boutique de Douala, Jean Dupont...">
+            <label for="client-name">Votre Nom, Entreprise ou Statut (Étudiant, Entrepreneur, etc.) :</label>
+            <input type="text" id="client-name" placeholder="Ex: Boutique de Douala, Jean Dupont, Étudiant...">
         </div>
 
-        <h2 class="section-title">Sélectionnez vos services :</h2>
+        <h2 class="section-title">Services d'Agence & Formations :</h2>
 
         <div class="services-grid">
             <!-- Service 1 -->
@@ -35,14 +38,74 @@
             <div class="service-card">
                 <input type="checkbox" value="communication" id="service-com">
                 <h3>Community Management</h3>
-                <p class="price">40 000 FCFA</p>
+                <p class="price">40 000 FCFA / mois</p>
             </div>
 
             <!-- Service 3 -->
             <div class="service-card">
+                <input type="checkbox" value="publicite" id="service-pub">
+                <h3>Publicité Facebook & Google Ads</h3>
+                <p class="price">30 000 FCFA</p>
+            </div>
+
+            <!-- Service 4 -->
+            <div class="service-card">
                 <input type="checkbox" value="website" id="service-web">
                 <h3>Création de Site Web</h3>
                 <p class="price">150 000 FCFA</p>
+            </div>
+
+            <!-- Service 5 -->
+            <div class="service-card">
+                <input type="checkbox" value="formation" id="service-form">
+                <h3>Formations Digitales</h3>
+                <p class="price">50 000 FCFA</p>
+            </div>
+
+            <!-- Service 6 -->
+            <div class="service-card">
+                <input type="checkbox" value="import" id="service-import">
+                <h3>Accompagnement Import Chine</h3>
+                <p class="price">35 000 FCFA</p>
+            </div>
+        </div>
+
+        <h2 class="section-title" style="margin-top: 30px;">Services Cybercafé & Rédaction :</h2>
+        
+        <div class="services-grid">
+            <!-- CV Français -->
+            <div class="service-card">
+                <input type="checkbox" value="cv_fr" id="service-cv-fr">
+                <h3>Rédaction de CV (Français)</h3>
+                <p class="price">1 500 FCFA</p>
+            </div>
+
+            <!-- CV Anglais -->
+            <div class="service-card">
+                <input type="checkbox" value="cv_en" id="service-cv-en">
+                <h3>Rédaction de CV (Anglais)</h3>
+                <p class="price">3 000 FCFA</p>
+            </div>
+
+            <!-- CV Canadien -->
+            <div class="service-card">
+                <input type="checkbox" value="cv_ca" id="service-cv-ca">
+                <h3>Rédaction de CV (Canadien)</h3>
+                <p class="price">5 000 FCFA</p>
+            </div>
+
+            <!-- CV Autre Langue -->
+            <div class="service-card">
+                <input type="checkbox" value="cv_other" id="service-cv-other">
+                <h3>CV (Langue Officielle Étrangère)</h3>
+                <p class="price">5 000 FCFA</p>
+            </div>
+
+            <!-- Lettre de motivation -->
+            <div class="service-card">
+                <input type="checkbox" value="motivation" id="service-motivation">
+                <h3>Lettre de Motivation</h3>
+                <p class="price">1 000 FCFA</p>
             </div>
         </div>
 
@@ -53,12 +116,12 @@
 
         <!-- Bouton d'action WhatsApp -->
         <a href="#" id="whatsapp-btn" class="cta-button" target="_blank" style="display: none;">
-            Commander via WhatsApp 💬
+            Envoyer ma commande via WhatsApp 💬
         </a>
 
     </main>
 
-    <!-- On lie notre logique Javascript à la fin -->
+    <!-- Lien vers notre logique JavaScript -->
     <script src="app.js"></script>
 </body>
 </html>

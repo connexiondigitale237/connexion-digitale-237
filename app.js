@@ -1,8 +1,19 @@
-// Tarifs de base de l'agence
+// Grille tarifaire détaillée de Connexion Digitale 237
 const prices = {
-    logo: 25000,          // 25 000 FCFA
-    communication: 40000,  // 40 000 FCFA
-    website: 150000        // 150 000 FCFA
+    // Services Agence & Formations
+    logo: 25000,          // Identité Visuelle
+    communication: 40000,  // Community Management
+    publicite: 30000,      // Campagnes Ads
+    website: 150000,       // Site Web
+    formation: 50000,      // Formations digitales
+    import: 35000,         // Importation Chine
+
+    // Services Cybercafé & Rédaction de documents
+    cv_fr: 1500,           // CV en Français
+    cv_en: 3000,           // CV en Anglais
+    cv_ca: 5000,           // CV Canadien
+    cv_other: 5000,        // CV Autre Langue Officielle Étrangère
+    motivation: 1000       // Lettre de motivation
 };
 
 // Sélection des éléments HTML
@@ -43,15 +54,15 @@ function calculateTotal() {
         }
     });
 
-    // Affichage avec formatage
+    // Affichage du montant formaté
     totalPriceEl.innerText = total.toLocaleString('fr-FR') + ' FCFA';
     
     updateWhatsAppLink(total);
 }
 
-// Mise à jour dynamique du message WhatsApp
+// Mise à jour du message envoyé sur votre numéro WhatsApp
 function updateWhatsAppLink(total) {
-    const clientName = clientNameInput.value.trim() || "un futur client";
+    const clientName = clientNameInput.value.trim() || "un client";
     
     if (selectedServices.length === 0) {
         whatsappBtn.style.display = 'none';
@@ -60,19 +71,19 @@ function updateWhatsAppLink(total) {
     
     whatsappBtn.style.display = 'block';
 
-    // Numéro WhatsApp de Connexion Digitale 237 (sans le +)
+    // Votre vrai numéro de l'agence Connexion Digitale 237 (sans le +)
     const myPhoneNumber = "237691850125"; 
     
-    const message = `Bonjour Connexion Digitale 237, je m'appelle ${clientName}. Je viens de faire une estimation sur votre simulateur en ligne et je souhaite un devis pour : \n- ${selectedServices.join('\n- ')}\n\nMontant estimé : ${total.toLocaleString('fr-FR')} FCFA. Merci de me recontacter !`;
+    const message = `Bonjour Connexion Digitale 237, je m'appelle ${clientName}. Je souhaite commander les services suivants :\n- ${selectedServices.join('\n- ')}\n\nMontant estimatif total : ${total.toLocaleString('fr-FR')} FCFA. Pouvons-nous caler les détails ?`;
     
     const encodedMessage = encodeURIComponent(message);
     whatsappBtn.href = `https://wa.me/${myPhoneNumber}?text=${encodedMessage}`;
 }
 
-// Écouter les changements dans le champ de saisie du nom
+// Écouter les saisies du client
 clientNameInput.addEventListener('input', () => {
     calculateTotal();
 });
 
-// Initialisation au chargement
+// Initialisation
 calculateTotal();
