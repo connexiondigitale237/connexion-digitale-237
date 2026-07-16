@@ -1,24 +1,8 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const trainingSelect = document.getElementById('trainingSelect');
-    const durationSelect = document.getElementById('durationSelect');
-    const whatsappBtn = document.getElementById('whatsappBtn');
-
-    whatsappBtn.addEventListener('click', () => {
-        const training = trainingSelect.value;
-        const durationOpt = durationSelect.options[durationSelect.selectedIndex];
-        const duration = durationOpt.value;
-        let price = parseInt(durationOpt.getAttribute('data-price'));
-        if (durationOpt.getAttribute('data-discount')) price *= 0.9;
-
-        const message = `Bonjour, je souhaite m'inscrire :
-- Service : ${training}
-- Durée : ${duration}
-- Total : ${price.toLocaleString()} FCFA
-
-Mes informations :
+document.getElementById('whatsappBtn').addEventListener('click', () => {
+    const formation = document.getElementById('trainingSelect').value;
+    const message = `Bonjour, je souhaite m'inscrire à la formation : ${formation}.
+Voici mes infos pour le dossier :
 - Nom complet :
 - Adresse de livraison :`;
-
-        window.open(`https://wa.me/237652091367?text=${encodeURIComponent(message)}`, '_blank');
-    });
+    window.open(`https://wa.me/237652091367?text=${encodeURIComponent(message)}`, '_blank');
 });

@@ -8,7 +8,10 @@
 </head>
 <body>
     <header class="navbar">
-        <img src="logo.png.jpg" alt="Logo" class="nav-logo">
+        <div class="logo-box">
+            <img src="logo.png" alt="Logo" class="nav-logo">
+            <span>Connexion Digitale 237</span>
+        </div>
         <nav>
             <a href="#services">Services</a>
             <a href="#formations">Formations</a>
@@ -16,33 +19,33 @@
     </header>
 
     <main class="container">
-        <!-- Section Services -->
         <section id="services">
-            <h1>Nos Services Digitaux, Design & Vidéo</h1>
+            <h1>Nos Services</h1>
             <div class="grid">
                 <div class="card"><h3>Pack Starter</h3><p>15 000 FCFA</p></div>
                 <div class="card"><h3>Pack Business</h3><p>55 000 FCFA</p></div>
-                <div class="card"><h3>Pack Social</h3><p>45 000 FCFA</p></div>
             </div>
         </section>
 
-        <!-- Section Formations -->
         <section id="formations">
-            <h2>Inscription aux Formations</h2>
-            <select id="trainingSelect">
-                <option value="Pack complet">Pack complet (Word, Canva, CapCut)</option>
-                <option value="Formation Word">Microsoft Word</option>
-                <option value="Formation Canva">Canva</option>
-                <option value="Formation CapCut">CapCut</option>
-            </select>
-            <select id="durationSelect">
-                <option value="14 jours" data-price="15000">14 jours — 15 000 FCFA</option>
-                <option value="28 jours" data-price="30000" data-discount="10">28 jours — 30 000 FCFA (-10%)</option>
-            </select>
-            <button id="whatsappBtn">Valider mon inscription</button>
+            <h2>Nos Formations</h2>
+            <div class="grid">
+                <div class="card"><h3>Microsoft Word</h3><p>Traitement de texte pro.</p></div>
+                <div class="card"><h3>Canva</h3><p>Design graphique facile.</p></div>
+                <div class="card"><h3>CapCut</h3><p>Montage vidéo mobile.</p></div>
+                <div class="card"><h3>Excel A à Z</h3><p>Analyse de données.</p></div>
+            </div>
+            <div class="form-container">
+                <select id="trainingSelect">
+                    <option value="Word">Microsoft Word</option>
+                    <option value="Canva">Canva</option>
+                    <option value="CapCut">CapCut</option>
+                    <option value="Excel">Excel A à Z</option>
+                </select>
+                <button id="whatsappBtn">Valider mon inscription</button>
+            </div>
         </section>
     </main>
-
     <script src="app.js"></script>
 </body>
 </html>
