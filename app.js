@@ -1,89 +1,81 @@
-// Grille tarifaire détaillée de Connexion Digitale 237
-const prices = {
-    // Services Agence & Formations
-    logo: 25000,          // Identité Visuelle
-    communication: 40000,  // Community Management
-    publicite: 30000,      // Campagnes Ads
-    website: 150000,       // Site Web
-    formation: 50000,      // Formations digitales
-    import: 35000,         // Importation Chine
+document.addEventListener('DOMContentLoaded', () => {
+    const serviceCards = document.querySelectorAll('.service-card');
+    const totalPriceEl = document.getElementById('total-price');
+    const whatsappBtn = document.getElementById('whatsapp-btn');
+    const clientNameInput = document.getElementById('client-name');
 
-    // Services Cybercafé & Rédaction de documents
-    cv_fr: 1500,           // CV en Français
-    cv_en: 3000,           // CV en Anglais
-    cv_ca: 5000,           // CV Canadien
-    cv_other: 5000,        // CV Autre Langue Officielle Étrangère
-    motivation: 1000       // Lettre de motivation
-};
+    let selectedServices = [];
 
-// Sélection des éléments HTML
-const cards = document.querySelectorAll('.service-card');
-const totalPriceEl = document.getElementById('total-price');
-const whatsappBtn = document.getElementById('whatsapp-btn');
-const clientNameInput = document.getElementById('client-name');
+    serviceCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const price = parseInt(card.getAttribute('data-price'));
+            const name = card.getAttribute('data-name');
 
-let selectedServices = [];
+            card.classList.toggle('selected');
 
-// Écouteur de clic sur les cartes de service
-cards.forEach(card => {
-    card.addEventListener('click', () => {
-        const checkbox = card.querySelector('input[type="checkbox"]');
-        checkbox.checked = !checkbox.checked;
-        
-        if (checkbox.checked) {
-            card.classList.add('selected');
+            if (card.classList.contains('selected')) {
+                selectedServices.push({ name, price });
+            } else {
+                selectedServices = selectedServices.filter(item => item.name !== name);
+            }
+            calculateTotal();
+        });
+    });
+
+    clientNameInput.addEventListener('input', () => {
+        if (selectedServices.length > 0) calculateTotal();
+    });
+
+    function calculateTotal() {
+        let total = 0;
+        selectedServices.forEach(item => total += item.price);
+
+        totalPriceEl.innerText = total.toLocaleString('fr-FR') + ' FCFA';
+
+        if (selectedServices.length > 0) {
+            whatsappBtn.style.display = 'block';
+            const client = clientNameInput.value.trim() || "un nouveau client";
+            const phone = "237652091367"; // Votre numéro officiel Business
+
+            let servicesText = "";
+            selectedServices.forEach(item => {
+                servicesText += `\n- ${item.name} (${item.price.toLocaleString('fr-FR')} FCFA)`;
+            });
+
+            const msg = `Bonjour Connexion Digitale 237,\n\nJe suis *${client}*.\n\nJe viens de simuler un devis sur l'application pour un montant total estimé à *${total.toLocaleString('fr-FR')} FCFA*.\n\nDétails des services :${servicesText}\n\nJe souhaite valider ma demande. Merci !`;
+
+            whatsappBtn.href = `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`;
         } else {
-            card.classList.remove('selected');
+            whatsappBtn.style.display = 'none';
         }
-        
-        calculateTotal();
-    });
-});
-
-// Calcul du devis
-function calculateTotal() {
-    let total = 0;
-    selectedServices = [];
-
-    cards.forEach(card => {
-        const checkbox = card.querySelector('input[type="checkbox"]');
-        if (checkbox.checked) {
-            const serviceId = checkbox.value;
-            total += prices[serviceId];
-            selectedServices.push(card.querySelector('h3').innerText);
-        }
-    });
-
-    // Affichage du montant formaté
-    totalPriceEl.innerText = total.toLocaleString('fr-FR') + ' FCFA';
-    
-    updateWhatsAppLink(total);
-}
-
-// Mise à jour du message envoyé sur votre numéro WhatsApp
-function updateWhatsAppLink(total) {
-    const clientName = clientNameInput.value.trim() || "un client";
-    
-    if (selectedServices.length === 0) {
-        whatsappBtn.style.display = 'none';
-        return;
     }
-    
-    whatsappBtn.style.display = 'block';
+    // Gestionnaire du Pop-up de paiement (0 FCFA)
+    const modal = document.getElementById('payment-modal');
+    const modalAmount = document.getElementById('modal-amount');
+    const closeModalBtn = document.getElementById('close-modal-btn');
+    const totalPriceSpan = document.getElementById('total-price');
 
-    // Votre vrai numéro de l'agence Connexion Digitale 237 (sans le +)
-    const myPhoneNumber = "237691850125"; 
-    
-    const message = `Bonjour Connexion Digitale 237, je m'appelle ${clientName}. Je souhaite commander les services suivants :\n- ${selectedServices.join('\n- ')}\n\nMontant estimatif total : ${total.toLocaleString('fr-FR')} FCFA. Pouvons-nous caler les détails ?`;
-    
-    const encodedMessage = encodeURIComponent(message);
-    whatsappBtn.href = `https://wa.me/${myPhoneNumber}?text=${encodedMessage}`;
-}
+    if (whatsappBtn && modal) {
+        // On intercepte le clic sur le bouton WhatsApp pour ouvrir le pop-up en premier
+        whatsappBtn.addEventListener('click', (e) => {
+            e.preventDefault(); // Bloque la redirection immédiate vers WhatsApp
+            
+            // On récupère le montant calculé en direct
+            const currentTotal = totalPriceSpan ? totalPriceSpan.textContent : "0";
+            if (modalAmount) {
+                modalAmount.textContent = currentTotal.replace(' FCFA', '');
+            }
+            
+            // On affiche le pop-up
+            modal.style.display = 'flex';
+        });
+    }
 
-// Écouter les saisies du client
-clientNameInput.addEventListener('input', () => {
-    calculateTotal();
+    if (closeModalBtn && modal) {
+        // Quand le client clique sur "Continuer", on ferme le pop-up et on ouvre WhatsApp
+        closeModalBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            window.open(whatsappBtn.href, '_blank');
+        });
+    }
 });
-
-// Initialisation
-calculateTotal();

@@ -3,125 +3,131 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion Digitale 237 - Devis en Ligne</title>
-    <!-- Lien vers notre fichier de style CSS externe -->
+    <title>Connexion Digitale 237</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <header>
-        <!-- Insertion du logo avec le nom exact de votre fichier -->
-        <div class="logo-container">
-            <img src="logo.png.jpg" alt="Logo Connexion Digitale 237" class="app-logo">
+    <!-- Barre de Navigation style Application Android -->
+    <nav class="app-nav">
+        <div class="nav-header">
+            <img src="logo.png.jpg" alt="Logo" class="nav-logo">
+            <span class="nav-title">Connexion Digitale 237</span>
         </div>
-        <h1>Connexion Digitale 237</h1>
-        <p>Estimez le tarif de votre projet ou service numérique en quelques clics !</p>
-    </header>
+        <ul class="nav-links">
+            <li><a href="#services-section" class="active">Services</a></li>
+            <li><a href="#formations-section">Formations</a></li>
+            <li><a href="#auth-section">Connexion</a></li>
+        </ul>
+    </nav>
+
     <main class="app-container">
-        
-        <div class="form-group">
-            <label for="client-name">Votre Nom, Entreprise ou Statut (Étudiant, Entrepreneur, etc.) :</label>
-            <input type="text" id="client-name" placeholder="Ex: Boutique de Douala, Jean Dupont, Étudiant...">
-        </div>
-
-        <h2 class="section-title">Services d'Agence & Formations :</h2>
-
-        <div class="services-grid">
-            <!-- Service 1 -->
-            <div class="service-card">
-                <input type="checkbox" value="logo" id="service-logo">
-                <h3>Identité Visuelle & Logo</h3>
-                <p class="price">25 000 FCFA</p>
-            </div>
-
-            <!-- Service 2 -->
-            <div class="service-card">
-                <input type="checkbox" value="communication" id="service-com">
-                <h3>Community Management</h3>
-                <p class="price">40 000 FCFA / mois</p>
-            </div>
-
-            <!-- Service 3 -->
-            <div class="service-card">
-                <input type="checkbox" value="publicite" id="service-pub">
-                <h3>Publicité Facebook & Google Ads</h3>
-                <p class="price">30 000 FCFA</p>
-            </div>
-
-            <!-- Service 4 -->
-            <div class="service-card">
-                <input type="checkbox" value="website" id="service-web">
-                <h3>Création de Site Web</h3>
-                <p class="price">150 000 FCFA</p>
-            </div>
-
-            <!-- Service 5 -->
-            <div class="service-card">
-                <input type="checkbox" value="formation" id="service-form">
-                <h3>Formations Digitales</h3>
-                <p class="price">50 000 FCFA</p>
-            </div>
-
-            <!-- Service 6 -->
-            <div class="service-card">
-                <input type="checkbox" value="import" id="service-import">
-                <h3>Accompagnement Import Chine</h3>
-                <p class="price">35 000 FCFA</p>
+        <!-- Identification Client -->
+        <div class="card-style">
+            <h2 class="section-title">Identification</h2>
+            <div class="form-group">
+                <input type="text" id="client-name" placeholder="Votre nom ou nom d'entreprise...">
             </div>
         </div>
 
-        <h2 class="section-title" style="margin-top: 30px;">Services Cybercafé & Rédaction :</h2>
-        
-        <div class="services-grid">
-            <!-- CV Français -->
-            <div class="service-card">
-                <input type="checkbox" value="cv_fr" id="service-cv-fr">
-                <h3>Rédaction de CV (Français)</h3>
-                <p class="price">1 500 FCFA</p>
+        <!-- Section Tarifs Cybercafé & Rédaction -->
+        <section id="services-section" class="card-style">
+            <h2 class="section-title">Services Cybercafé & Rédaction</h2>
+            <div class="services-grid">
+                <div class="service-card" data-price="1500" data-name="CV en Français">
+                    <h3>CV en Français</h3>
+                    <p class="price">1 500 FCFA</p>
+                </div>
+                <div class="service-card" data-price="3000" data-name="CV en Anglais">
+                    <h3>CV en Anglais</h3>
+                    <p class="price">3 000 FCFA</p>
+                </div>
+                <div class="service-card" data-price="5000" data-name="CV Canadien">
+                    <h3>CV Canadien</h3>
+                    <p class="price">5 000 FCFA</p>
+                </div>
+                <div class="service-card" data-price="5000" data-name="CV Autre Langue Étrangère">
+                    <h3>CV Autre Langue</h3>
+                    <p class="price">5 000 FCFA</p>
+                </div>
+                <div class="service-card" data-price="1000" data-name="Lettre de Motivation">
+                    <h3>Lettre de Motivation</h3>
+                    <p class="price">1 000 FCFA</p>
+                </div>
             </div>
+        </section>
 
-            <!-- CV Anglais -->
-            <div class="service-card">
-                <input type="checkbox" value="cv_en" id="service-cv-en">
-                <h3>Rédaction de CV (Anglais)</h3>
-                <p class="price">3 000 FCFA</p>
+        <!-- Section Formations & Numérique -->
+        <section id="formations-section" class="card-style">
+            <h2 class="section-title">Services Digitaux & Formations</h2>
+            <div class="services-grid">
+                <div class="service-card" data-price="25000" data-name="Identité Visuelle & Logo">
+                    <h3>Identité Visuelle / Logo</h3>
+                    <p class="price">25 000 FCFA</p>
+                </div>
+                <div class="service-card" data-price="40000" data-name="Community Management">
+                    <h3>Community Management</h3>
+                    <p class="price">40 000 FCFA</p>
+                </div>
+                <div class="service-card" data-price="30000" data-name="Publicité Facebook/Google">
+                    <h3>Publicité Ads</h3>
+                    <p class="price">30 000 FCFA</p>
+                </div>
+                <div class="service-card" data-price="150000" data-name="Création Site Web">
+                    <h3>Création Site Web</h3>
+                    <p class="price">150 000 FCFA</p>
+                </div>
             </div>
-
-            <!-- CV Canadien -->
-            <div class="service-card">
-                <input type="checkbox" value="cv_ca" id="service-cv-ca">
-                <h3>Rédaction de CV (Canadien)</h3>
-                <p class="price">5 000 FCFA</p>
-            </div>
-
-            <!-- CV Autre Langue -->
-            <div class="service-card">
-                <input type="checkbox" value="cv_other" id="service-cv-other">
-                <h3>CV (Langue Officielle Étrangère)</h3>
-                <p class="price">5 000 FCFA</p>
-            </div>
-
-            <!-- Lettre de motivation -->
-            <div class="service-card">
-                <input type="checkbox" value="motivation" id="service-motivation">
-                <h3>Lettre de Motivation</h3>
-                <p class="price">1 000 FCFA</p>
-            </div>
-        </div>
-
-        <div class="result-box">
-            <p class="total-label">Montant Total Estimé</p>
-            <p class="total-price" id="total-price">0 FCFA</p>
-        </div>
-
-        <!-- Bouton d'action WhatsApp -->
-        <a href="#" id="whatsapp-btn" class="cta-button" target="_blank" style="display: none;">
-            Envoyer ma commande via WhatsApp 💬
-        </a>
-
+        </section>
     </main>
 
-    <!-- Lien vers notre logique JavaScript -->
+    <!-- Pied de page fixe (Style Barre de Devis Android) -->
+    <div class="sticky-footer-box">
+        <div style="display: flex; justify-content: space-between; align-items: center; max-width: 600px; margin: 0 auto; width: 100%;">
+            <div>
+                <p style="font-size: 0.8rem; color: #666; text-transform: uppercase;">Total Estimé</p>
+                <span id="total-price" class="total-price">0 FCFA</span>
+            </div>
+            <a id="whatsapp-btn" class="cta-button" target="_blank" style="display: none;">
+                Valider par WhatsApp
+            </a>
+        </div>
+    </div>
+
     <script src="app.js"></script>
+    <!-- Modal d'instructions de paiement (0 FCFA) -->
+<div id="payment-modal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.7); z-index: 1000; align-items: center; justify-content: center; backdrop-filter: blur(3px);">
+    <div style="background-color: white; padding: 25px; border-radius: 20px; max-width: 90%; width: 380px; text-align: center; box-shadow: 0 10px 25px rgba(0,0,0,0.3); font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+        <div style="font-size: 3rem; margin-bottom: 10px;">💳</div>
+        <h3 style="color: #25D366; margin: 0 0 10px 0; font-size: 1.4rem;">Mode de Paiement</h3>
+        <p style="font-size: 0.9rem; color: #444; margin-bottom: 15px; line-height: 1.4;">
+            Pour valider votre commande de <strong id="modal-amount" style="color: #32CD32; font-size: 1.1rem;">0</strong> <strong style="color: #32CD32;">FCFA</strong>, veuillez effectuer le transfert :
+        </p>
+        
+        <div style="background-color: #f7f9fa; padding: 15px; border-radius: 12px; text-align: left; margin-bottom: 20px; font-size: 0.9rem; border: 1px solid #eef;">
+            <!-- MTN MoMo -->
+            <p style="margin: 0 0 12px 0;">
+                <strong style="color: #fc0; text-shadow: 0.5px 0.5px 0px #000;">MTN MoMo :</strong><br>
+                Saisir <code style="background: #fff3cd; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-family: monospace;">*126#</code> vers le <code style="background: #fff3cd; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-family: monospace;">672948415</code><br>
+                <span style="color: #666; font-size: 0.8rem; display: block; margin-top: 2px;">Bénéficiaire : <strong>Alfred Merimet</strong></span>
+            </p>
+            <hr style="border: 0; border-top: 1px solid #eef; margin: 10px 0;">
+            <!-- Orange Money -->
+            <p style="margin: 0;">
+                <strong style="color: #ff6600;">Orange Money :</strong><br>
+                Saisir <code style="background: #ffe5d5; padding: 2px 6px; border-radius: 4px; font-weight: bold; font-family: monospace;">#150*1*1*6XXXXXXXX#</code><br>
+                <span style="color: #666; font-size: 0.8rem; display: block; margin-top: 2px;">Bénéficiaire : <strong>Connexion Digitale 237</strong></span>
+            </p>
+        </div>
+        
+        <p style="font-size: 0.8rem; color: #777; margin-bottom: 20px;">
+            Une fois le transfert effectué, cliquez ci-dessous pour envoyer votre reçu sur WhatsApp et lancer la commande.
+        </p>
+        
+        <button id="close-modal-btn" style="background-color: #25D366; color: white; border: none; padding: 14px 20px; border-radius: 30px; font-weight: bold; cursor: pointer; width: 100%; font-size: 1rem; box-shadow: 0 4px 10px rgba(37, 211, 102, 0.3); transition: transform 0.1s;">
+            Continuer vers WhatsApp
+        </button>
+    </div>
+</div>
 </body>
 </html>
